@@ -12,8 +12,8 @@ import RxCocoa
 
 final class DatePickerViewController: UIViewController {
     
-    let simplePickerView = UIPickerView()
-    let simpleLabel = UILabel()
+    private let simplePickerView = UIPickerView()
+    private let simpleLabel = UILabel()
     
     let disposeBag = DisposeBag()
     

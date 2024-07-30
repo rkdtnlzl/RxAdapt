@@ -17,6 +17,12 @@
 		01E407BE2C59120B0006B86F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 01E407BD2C59120B0006B86F /* SnapKit */; };
 		01E407C12C5914130006B86F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 01E407C02C5914130006B86F /* RxCocoa */; };
 		01E407C32C5914130006B86F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01E407C22C5914130006B86F /* RxSwift */; };
+		01E407C52C5919090006B86F /* RxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407C42C5919090006B86F /* RxTableViewController.swift */; };
+		01E407C72C59291A0006B86F /* RxTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407C62C59291A0006B86F /* RxTextFieldViewController.swift */; };
+		01E407CB2C592C480006B86F /* JustViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407CA2C592C480006B86F /* JustViewController.swift */; };
+		01E407CD2C592D130006B86F /* OfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407CC2C592D130006B86F /* OfViewController.swift */; };
+		01E407CF2C592D6C0006B86F /* FromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407CE2C592D6C0006B86F /* FromViewController.swift */; };
+		01E407D12C592DB50006B86F /* TakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407D02C592DB50006B86F /* TakeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,12 @@
 		01E407B22C59100E0006B86F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E407B42C59100E0006B86F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E407BA2C5911F60006B86F /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		01E407C42C5919090006B86F /* RxTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewController.swift; sourceTree = "<group>"; };
+		01E407C62C59291A0006B86F /* RxTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTextFieldViewController.swift; sourceTree = "<group>"; };
+		01E407CA2C592C480006B86F /* JustViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustViewController.swift; sourceTree = "<group>"; };
+		01E407CC2C592D130006B86F /* OfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfViewController.swift; sourceTree = "<group>"; };
+		01E407CE2C592D6C0006B86F /* FromViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromViewController.swift; sourceTree = "<group>"; };
+		01E407D02C592DB50006B86F /* TakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,13 +79,35 @@
 				01E407A62C59100D0006B86F /* AppDelegate.swift */,
 				01E407A82C59100D0006B86F /* SceneDelegate.swift */,
 				01E407AA2C59100D0006B86F /* ViewController.swift */,
-				01E407BA2C5911F60006B86F /* DatePickerViewController.swift */,
+				01E407C82C592C1E0006B86F /* RxCocoa */,
+				01E407C92C592C2D0006B86F /* Observable */,
 				01E407AC2C59100D0006B86F /* Main.storyboard */,
 				01E407AF2C59100E0006B86F /* Assets.xcassets */,
 				01E407B12C59100E0006B86F /* LaunchScreen.storyboard */,
 				01E407B42C59100E0006B86F /* Info.plist */,
 			);
 			path = RxAdapt;
+			sourceTree = "<group>";
+		};
+		01E407C82C592C1E0006B86F /* RxCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				01E407BA2C5911F60006B86F /* DatePickerViewController.swift */,
+				01E407C42C5919090006B86F /* RxTableViewController.swift */,
+				01E407C62C59291A0006B86F /* RxTextFieldViewController.swift */,
+			);
+			path = RxCocoa;
+			sourceTree = "<group>";
+		};
+		01E407C92C592C2D0006B86F /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				01E407CA2C592C480006B86F /* JustViewController.swift */,
+				01E407CC2C592D130006B86F /* OfViewController.swift */,
+				01E407CE2C592D6C0006B86F /* FromViewController.swift */,
+				01E407D02C592DB50006B86F /* TakeViewController.swift */,
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,9 +190,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E407CB2C592C480006B86F /* JustViewController.swift in Sources */,
 				01E407BB2C5911F60006B86F /* DatePickerViewController.swift in Sources */,
 				01E407AB2C59100D0006B86F /* ViewController.swift in Sources */,
+				01E407C72C59291A0006B86F /* RxTextFieldViewController.swift in Sources */,
 				01E407A72C59100D0006B86F /* AppDelegate.swift in Sources */,
+				01E407D12C592DB50006B86F /* TakeViewController.swift in Sources */,
+				01E407CD2C592D130006B86F /* OfViewController.swift in Sources */,
+				01E407C52C5919090006B86F /* RxTableViewController.swift in Sources */,
+				01E407CF2C592D6C0006B86F /* FromViewController.swift in Sources */,
 				01E407A92C59100D0006B86F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
