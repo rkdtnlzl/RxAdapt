@@ -28,6 +28,7 @@
 		01E407E92C5A12050006B86F /* SimpleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407E82C5A12050006B86F /* SimpleValidationViewController.swift */; };
 		01E407EB2C5A1E760006B86F /* SimpleTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407EA2C5A1E760006B86F /* SimpleTableViewViewController.swift */; };
 		01E4082C2C5BCB200006B86F /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */; };
+		01E4082F2C5D1C2A0006B86F /* ShoppingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		01E407E82C5A12050006B86F /* SimpleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationViewController.swift; sourceTree = "<group>"; };
 		01E407EA2C5A1E760006B86F /* SimpleTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewViewController.swift; sourceTree = "<group>"; };
 		01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
+		01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,7 @@
 				01E407A82C59100D0006B86F /* SceneDelegate.swift */,
 				01E407AA2C59100D0006B86F /* ViewController.swift */,
 				01E407E62C5A0FEA0006B86F /* BaseViewController.swift */,
-				01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */,
+				01E4082D2C5D1C130006B86F /* Shopping */,
 				01E407E32C5A0C910006B86F /* RxExample */,
 				01E407C82C592C1E0006B86F /* RxCocoa */,
 				01E407C92C592C2D0006B86F /* Observable */,
@@ -131,6 +133,15 @@
 				01E407EA2C5A1E760006B86F /* SimpleTableViewViewController.swift */,
 			);
 			path = RxExample;
+			sourceTree = "<group>";
+		};
+		01E4082D2C5D1C130006B86F /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+				01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */,
+				01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */,
+			);
+			path = Shopping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +229,7 @@
 				01E407AB2C59100D0006B86F /* ViewController.swift in Sources */,
 				01E407C72C59291A0006B86F /* RxTextFieldViewController.swift in Sources */,
 				01E4082C2C5BCB200006B86F /* ShoppingViewController.swift in Sources */,
+				01E4082F2C5D1C2A0006B86F /* ShoppingCell.swift in Sources */,
 				01E407A72C59100D0006B86F /* AppDelegate.swift in Sources */,
 				01E407E72C5A0FEA0006B86F /* BaseViewController.swift in Sources */,
 				01E407D12C592DB50006B86F /* TakeViewController.swift in Sources */,

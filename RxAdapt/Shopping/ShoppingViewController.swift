@@ -10,6 +10,11 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
+struct ShoppingItem {
+    let title: String
+    var isChecked: Bool
+}
+
 final class ShoppingViewController: BaseViewController, UITableViewDelegate {
     
     let searchView = UIView()
@@ -18,27 +23,39 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     let disposeBag = DisposeBag()
     
-    var data = ["그립톡 구매하기",
-                "사이다 구매",
-                "아이패드 최저가 알아보기",
-                "양말 구매하기"
+    var data = [
+        ShoppingItem(title: "그립톡 구매하기", isChecked: false),
+        ShoppingItem(title: "사이다 구매", isChecked: false),
+        ShoppingItem(title: "아이패드 최저가 알아보기", isChecked: false),
+        ShoppingItem(title: "양말 구매하기", isChecked: false)
     ]
     
     lazy var list = BehaviorSubject(value: data)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "쇼핑"
-        
+        tableViewBind()
+    }
+    
+    func tableViewBind() {
         list
-            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
-                cell.textLabel?.text = element
-                let checkmarkImageView = UIImageView(image: UIImage(systemName: "checkmark.square"))
-                checkmarkImageView.tintColor = .systemBlue
-                cell.accessoryView = checkmarkImageView
+            .bind(to: tableView.rx.items(cellIdentifier: ShoppingCell.identifier, cellType: ShoppingCell.self)) { [weak self] (row, element, cell) in
+                guard let self = self else { return }
+                cell.configure(with: element)
+                cell.checkmarkButton.rx.tap
+                    .bind { [weak self] in
+                        self?.toggleCheckmark(at: row)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
+    }
+    
+    func toggleCheckmark(at index: Int) {
+        var currentData = try! list.value()
+        currentData[index].isChecked.toggle()
+        list.onNext(currentData)
     }
     
     override func configureHierarchy() {
@@ -49,7 +66,7 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
     }
     
     override func configureUI() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(ShoppingCell.self, forCellReuseIdentifier: ShoppingCell.identifier)
         
         searchView.backgroundColor = .systemGray5
         searchView.layer.cornerRadius = 5
