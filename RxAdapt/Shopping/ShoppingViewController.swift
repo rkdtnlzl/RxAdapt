@@ -11,11 +11,14 @@ import RxSwift
 import RxCocoa
 
 struct ShoppingItem {
-    let title: String
+    var title: String
     var isChecked: Bool
 }
 
 final class ShoppingViewController: BaseViewController, UITableViewDelegate {
+    deinit {
+        print("deinit \(self)")
+    }
     
     let searchView = UIView()
     let textField = UITextField()
@@ -43,6 +46,7 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
         list
             .bind(to: tableView.rx.items(cellIdentifier: ShoppingCell.identifier, cellType: ShoppingCell.self)) { [weak self] (row, element, cell) in
                 guard let self = self else { return }
+                cell.backgroundColor = .systemGray6
                 cell.configure(with: element)
                 cell.checkmarkButton.rx.tap
                     .bind { [weak self] in
@@ -57,6 +61,13 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
                 var data = try! owner.list.value()
                 data.remove(at: indexPath.row)
                 owner.list.onNext(data)
+            }
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(ShoppingItem.self)
+            .bind(with: self) { owner, item in
+                guard let index = try? owner.list.value().firstIndex(where: { $0.title == item.title }) else { return }
+                owner.presentEditVC(for: index, item: item)
             }
             .disposed(by: disposeBag)
     }
@@ -75,6 +86,14 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
             .disposed(by: disposeBag)
     }
     
+    func presentEditVC(for index: Int, item: ShoppingItem) {
+        let editViewController = ShoppingEditViewController()
+        editViewController.shoppingItem = item
+        editViewController.index = index
+        editViewController.list = list
+        present(editViewController, animated: true, completion: nil)
+    }
+    
     func toggleCheckmark(at index: Int) {
         var currentData = try! list.value()
         currentData[index].isChecked.toggle()
@@ -90,6 +109,7 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
     
     override func configureUI() {
         tableView.register(ShoppingCell.self, forCellReuseIdentifier: ShoppingCell.identifier)
+        tableView.backgroundColor = .white
         
         searchView.backgroundColor = .systemGray5
         searchView.layer.cornerRadius = 5

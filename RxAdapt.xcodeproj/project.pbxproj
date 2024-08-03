@@ -29,6 +29,7 @@
 		01E407EB2C5A1E760006B86F /* SimpleTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407EA2C5A1E760006B86F /* SimpleTableViewViewController.swift */; };
 		01E4082C2C5BCB200006B86F /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */; };
 		01E4082F2C5D1C2A0006B86F /* ShoppingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */; };
+		01E408312C5E129D0006B86F /* ShoppingEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408302C5E129D0006B86F /* ShoppingEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		01E407EA2C5A1E760006B86F /* SimpleTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewViewController.swift; sourceTree = "<group>"; };
 		01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCell.swift; sourceTree = "<group>"; };
+		01E408302C5E129D0006B86F /* ShoppingEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */,
 				01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */,
+				01E408302C5E129D0006B86F /* ShoppingEditViewController.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			files = (
 				01E407CB2C592C480006B86F /* JustViewController.swift in Sources */,
 				01E407BB2C5911F60006B86F /* DatePickerViewController.swift in Sources */,
+				01E408312C5E129D0006B86F /* ShoppingEditViewController.swift in Sources */,
 				01E407AB2C59100D0006B86F /* ViewController.swift in Sources */,
 				01E407C72C59291A0006B86F /* RxTextFieldViewController.swift in Sources */,
 				01E4082C2C5BCB200006B86F /* ShoppingViewController.swift in Sources */,
