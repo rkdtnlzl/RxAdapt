@@ -51,6 +51,14 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
                     .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
+        
+        tableView.rx.itemDeleted
+            .bind(with: self) { owner, indexPath in
+                var data = try! owner.list.value()
+                data.remove(at: indexPath.row)
+                owner.list.onNext(data)
+            }
+            .disposed(by: disposeBag)
     }
     
     func addButtonBind() {
