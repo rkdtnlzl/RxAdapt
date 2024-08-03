@@ -36,6 +36,7 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
         super.viewDidLoad()
         navigationItem.title = "쇼핑"
         tableViewBind()
+        addButtonBind()
     }
     
     func tableViewBind() {
@@ -49,6 +50,20 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
                     }
                     .disposed(by: cell.disposeBag)
             }
+            .disposed(by: disposeBag)
+    }
+    
+    func addButtonBind() {
+        addButton.rx.tap
+            .withLatestFrom(textField.rx.text.orEmpty)
+            .filter { !$0.isEmpty }
+            .map { ShoppingItem(title: $0, isChecked: false) }
+            .bind(with: self, onNext: { owner, item in
+                var data = try! owner.list.value()
+                data.append(item)
+                owner.list.onNext(data)
+                owner.textField.text = ""
+            })
             .disposed(by: disposeBag)
     }
     
