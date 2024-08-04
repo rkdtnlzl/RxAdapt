@@ -34,6 +34,8 @@
 		01E408382C5F64A20006B86F /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408372C5F64A20006B86F /* PasswordViewController.swift */; };
 		01E4083B2C5F65710006B86F /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4083A2C5F65700006B86F /* PasswordView.swift */; };
 		01E4083D2C5F658B0006B86F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4083C2C5F658B0006B86F /* BaseView.swift */; };
+		01E408402C5F6E690006B86F /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4083F2C5F6E690006B86F /* PhoneView.swift */; };
+		01E408422C5F6E900006B86F /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408412C5F6E900006B86F /* PhoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		01E408372C5F64A20006B86F /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		01E4083A2C5F65700006B86F /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		01E4083C2C5F658B0006B86F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		01E4083F2C5F6E690006B86F /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		01E408412C5F6E900006B86F /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				01E407AA2C59100D0006B86F /* ViewController.swift */,
 				01E407E62C5A0FEA0006B86F /* BaseViewController.swift */,
 				01E4083C2C5F658B0006B86F /* BaseView.swift */,
+				01E4083E2C5F6E5F0006B86F /* Phone */,
 				01E408392C5F64A40006B86F /* Password */,
 				01E408342C5F49890006B86F /* DatePicker */,
 				01E4082D2C5D1C130006B86F /* Shopping */,
@@ -173,6 +178,15 @@
 				01E4083A2C5F65700006B86F /* PasswordView.swift */,
 			);
 			path = Password;
+			sourceTree = "<group>";
+		};
+		01E4083E2C5F6E5F0006B86F /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				01E4083F2C5F6E690006B86F /* PhoneView.swift */,
+				01E408412C5F6E900006B86F /* PhoneViewController.swift */,
+			);
+			path = Phone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,12 +284,14 @@
 				01E407CD2C592D130006B86F /* OfViewController.swift in Sources */,
 				01E407C52C5919090006B86F /* RxTableViewController.swift in Sources */,
 				01E407E52C5A0CA10006B86F /* NumberViewController.swift in Sources */,
+				01E408422C5F6E900006B86F /* PhoneViewController.swift in Sources */,
 				01E4083B2C5F65710006B86F /* PasswordView.swift in Sources */,
 				01E407EB2C5A1E760006B86F /* SimpleTableViewViewController.swift in Sources */,
 				01E407CF2C592D6C0006B86F /* FromViewController.swift in Sources */,
 				01E4083D2C5F658B0006B86F /* BaseView.swift in Sources */,
 				01E407E92C5A12050006B86F /* SimpleValidationViewController.swift in Sources */,
 				01E407A92C59100D0006B86F /* SceneDelegate.swift in Sources */,
+				01E408402C5F6E690006B86F /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
