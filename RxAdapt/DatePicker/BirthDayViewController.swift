@@ -57,19 +57,28 @@ final class BirthDayViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         Observable.combineLatest(year, month, day)
-            .map { year, month, day -> String in
+            .map { year, month, day -> (String, Bool) in
                 let today = Date()
                 let calendar = Calendar.current
                 let dateComponent = DateComponents(year: year, month: month, day: day)
                 guard let birthDate = calendar.date(from: dateComponent) else {
-                    return "올바른 날짜를 선택해주세요."
+                    return ("", false)
                 }
                 let ageComponents = calendar.dateComponents([.year], from: birthDate, to: today)
                 let age = ageComponents.year ?? 0
                 
-                return age >= 17 ? "가입이 가능합니다." : "만 17세 이상만 가입할 수 있습니다."
+                if age >= 17 {
+                    return ("가입이 가능합니다.", true)
+                } else {
+                    return ("만 17세 이상만 가입할 수 있습니다.", false)
+                }
             }
-            .bind(to: infoLabel.rx.text)
+            .bind(with: self) { owner, result in
+                let (text, isEnabled) = result
+                owner.infoLabel.text = text
+                owner.joinButton.isEnabled = isEnabled
+                owner.joinButton.backgroundColor = isEnabled ? .blue : .lightGray
+            }
             .disposed(by: disposeBag)
     }
     
@@ -77,9 +86,6 @@ final class BirthDayViewController: BaseViewController {
         view.addSubview(birthDayPicker)
         view.addSubview(infoLabel)
         view.addSubview(stackView)
-        view.addSubview(yearLabel)
-        view.addSubview(monthLabel)
-        view.addSubview(dayLabel)
         view.addSubview(joinButton)
     }
     
@@ -107,6 +113,7 @@ final class BirthDayViewController: BaseViewController {
         joinButton.setTitle("가입하기", for: .normal)
         joinButton.backgroundColor = .lightGray
         joinButton.layer.cornerRadius = 10
+        joinButton.isEnabled = false
     }
     
     override func configureConstraints() {
@@ -125,7 +132,7 @@ final class BirthDayViewController: BaseViewController {
         }
         
         birthDayPicker.snp.makeConstraints {
-            $0.top.equalTo(stackView.snp.bottom)
+            $0.top.equalTo(stackView.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
         
