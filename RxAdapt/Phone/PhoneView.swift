@@ -25,6 +25,7 @@ final class PhoneView: BaseView {
         phoneTextField.layer.cornerRadius = 10
         phoneTextField.layer.borderColor = UIColor.black.cgColor
         phoneTextField.layer.borderWidth = 0.5
+        phoneTextField.text = "010"
         phoneTextField.keyboardType = .phonePad
         
         nextButton.setTitle("다음", for: .normal)

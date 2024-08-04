@@ -36,6 +36,7 @@
 		01E4083D2C5F658B0006B86F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4083C2C5F658B0006B86F /* BaseView.swift */; };
 		01E408402C5F6E690006B86F /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4083F2C5F6E690006B86F /* PhoneView.swift */; };
 		01E408422C5F6E900006B86F /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408412C5F6E900006B86F /* PhoneViewController.swift */; };
+		01E408442C5F7A920006B86F /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408432C5F7A920006B86F /* PhoneViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		01E4083C2C5F658B0006B86F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		01E4083F2C5F6E690006B86F /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
 		01E408412C5F6E900006B86F /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
+		01E408432C5F7A920006B86F /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			children = (
 				01E4083F2C5F6E690006B86F /* PhoneView.swift */,
 				01E408412C5F6E900006B86F /* PhoneViewController.swift */,
+				01E408432C5F7A920006B86F /* PhoneViewModel.swift */,
 			);
 			path = Phone;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				01E407CF2C592D6C0006B86F /* FromViewController.swift in Sources */,
 				01E4083D2C5F658B0006B86F /* BaseView.swift in Sources */,
 				01E407E92C5A12050006B86F /* SimpleValidationViewController.swift in Sources */,
+				01E408442C5F7A920006B86F /* PhoneViewModel.swift in Sources */,
 				01E407A92C59100D0006B86F /* SceneDelegate.swift in Sources */,
 				01E408402C5F6E690006B86F /* PhoneView.swift in Sources */,
 			);
