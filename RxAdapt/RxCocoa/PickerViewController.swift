@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class DatePickerViewController: UIViewController {
+final class PickerViewController: UIViewController {
     
     private let simplePickerView = UIPickerView()
     private let simpleLabel = UILabel()

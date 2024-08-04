@@ -13,7 +13,7 @@
 		01E407AE2C59100D0006B86F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 01E407AD2C59100D0006B86F /* Base */; };
 		01E407B02C59100E0006B86F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E407AF2C59100E0006B86F /* Assets.xcassets */; };
 		01E407B32C59100E0006B86F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 01E407B22C59100E0006B86F /* Base */; };
-		01E407BB2C5911F60006B86F /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407BA2C5911F60006B86F /* DatePickerViewController.swift */; };
+		01E407BB2C5911F60006B86F /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E407BA2C5911F60006B86F /* PickerViewController.swift */; };
 		01E407BE2C59120B0006B86F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 01E407BD2C59120B0006B86F /* SnapKit */; };
 		01E407C12C5914130006B86F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 01E407C02C5914130006B86F /* RxCocoa */; };
 		01E407C32C5914130006B86F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01E407C22C5914130006B86F /* RxSwift */; };
@@ -30,6 +30,7 @@
 		01E4082C2C5BCB200006B86F /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */; };
 		01E4082F2C5D1C2A0006B86F /* ShoppingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */; };
 		01E408312C5E129D0006B86F /* ShoppingEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408302C5E129D0006B86F /* ShoppingEditViewController.swift */; };
+		01E408362C5F49990006B86F /* BirthDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408352C5F49990006B86F /* BirthDayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +42,7 @@
 		01E407AF2C59100E0006B86F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01E407B22C59100E0006B86F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E407B42C59100E0006B86F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01E407BA2C5911F60006B86F /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		01E407BA2C5911F60006B86F /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		01E407C42C5919090006B86F /* RxTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewController.swift; sourceTree = "<group>"; };
 		01E407C62C59291A0006B86F /* RxTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTextFieldViewController.swift; sourceTree = "<group>"; };
 		01E407CA2C592C480006B86F /* JustViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 		01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCell.swift; sourceTree = "<group>"; };
 		01E408302C5E129D0006B86F /* ShoppingEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingEditViewController.swift; sourceTree = "<group>"; };
+		01E408352C5F49990006B86F /* BirthDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				01E407A82C59100D0006B86F /* SceneDelegate.swift */,
 				01E407AA2C59100D0006B86F /* ViewController.swift */,
 				01E407E62C5A0FEA0006B86F /* BaseViewController.swift */,
+				01E408342C5F49890006B86F /* DatePicker */,
 				01E4082D2C5D1C130006B86F /* Shopping */,
 				01E407E32C5A0C910006B86F /* RxExample */,
 				01E407C82C592C1E0006B86F /* RxCocoa */,
@@ -109,7 +112,7 @@
 		01E407C82C592C1E0006B86F /* RxCocoa */ = {
 			isa = PBXGroup;
 			children = (
-				01E407BA2C5911F60006B86F /* DatePickerViewController.swift */,
+				01E407BA2C5911F60006B86F /* PickerViewController.swift */,
 				01E407C42C5919090006B86F /* RxTableViewController.swift */,
 				01E407C62C59291A0006B86F /* RxTextFieldViewController.swift */,
 			);
@@ -145,6 +148,14 @@
 				01E408302C5E129D0006B86F /* ShoppingEditViewController.swift */,
 			);
 			path = Shopping;
+			sourceTree = "<group>";
+		};
+		01E408342C5F49890006B86F /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				01E408352C5F49990006B86F /* BirthDayViewController.swift */,
+			);
+			path = DatePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				01E407CB2C592C480006B86F /* JustViewController.swift in Sources */,
-				01E407BB2C5911F60006B86F /* DatePickerViewController.swift in Sources */,
+				01E407BB2C5911F60006B86F /* PickerViewController.swift in Sources */,
+				01E408362C5F49990006B86F /* BirthDayViewController.swift in Sources */,
 				01E408312C5E129D0006B86F /* ShoppingEditViewController.swift in Sources */,
 				01E407AB2C59100D0006B86F /* ViewController.swift in Sources */,
 				01E407C72C59291A0006B86F /* RxTextFieldViewController.swift in Sources */,
