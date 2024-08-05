@@ -16,7 +16,7 @@ final class PasswordViewController: BaseViewController {
     }
     
     private let passwordView = PasswordView()
-    let validText = Observable.just("8자 이상 입력하세요.")
+    private let passwordViewModel = PasswordViewModel()
     
     let disposeBag = DisposeBag()
     
@@ -32,18 +32,20 @@ final class PasswordViewController: BaseViewController {
     
     // loadView로 UI를 짜면 너무 코드가 길어지는 느낌...?
     func bind() {
-        validText
+        
+        let input = PasswordViewModel.Input(passwordText: passwordView.passwordTextFeild.rx.text.orEmpty)
+        
+        let output = passwordViewModel.transform(input: input)
+        
+        output.validation
             .bind(to: passwordView.descriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        let validation = passwordView.passwordTextFeild.rx.text.orEmpty
-            .map { $0.count >= 8}
-        
-        validation
-            .bind(to: passwordView.nextButton.rx.isEnabled, passwordView.descriptionLabel.rx.isHidden)
+        output.isValid
+            .bind(to: passwordView.nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        validation
+        output.isValid
             .bind(with: self) { owner, value in
                 let color: UIColor = value ? .systemRed : .lightGray
                 owner.passwordView.nextButton.backgroundColor = color
