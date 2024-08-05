@@ -17,7 +17,6 @@ final class PhoneViewController: BaseViewController {
     
     private let phoneView = PhoneView()
     private let viewModel = PhoneViewModel()
-    let validText = Observable.just("전화번호를 정확히 입력하세요.")
     
     let disposeBag = DisposeBag()
     
@@ -31,19 +30,19 @@ final class PhoneViewController: BaseViewController {
     }
     
     func bind() {
-        viewModel.validText
+        let input = PhoneViewModel.Input(phoneText: phoneView.phoneTextField.rx.text.orEmpty)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.validText
             .bind(to: phoneView.descriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        phoneView.phoneTextField.rx.text.orEmpty
-            .bind(to: viewModel.phoneText)
-            .disposed(by: disposeBag)
-        
-        viewModel.isValid
+        output.isValid
             .bind(to: phoneView.nextButton.rx.isEnabled, phoneView.descriptionLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        viewModel.isValid
+        output.isValid
             .bind(with: self) { owner, value in
                 let color: UIColor = value ? .systemBlue : .lightGray
                 owner.phoneView.nextButton.backgroundColor = color
