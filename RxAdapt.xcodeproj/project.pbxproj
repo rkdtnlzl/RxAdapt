@@ -38,6 +38,7 @@
 		01E408422C5F6E900006B86F /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408412C5F6E900006B86F /* PhoneViewController.swift */; };
 		01E408442C5F7A920006B86F /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408432C5F7A920006B86F /* PhoneViewModel.swift */; };
 		01E4084A2C60A9760006B86F /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408492C60A9760006B86F /* PasswordViewModel.swift */; };
+		01E408512C61AB3B0006B86F /* ShoppingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E408502C61AB3B0006B86F /* ShoppingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		01E408412C5F6E900006B86F /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		01E408432C5F7A920006B86F /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
 		01E408492C60A9760006B86F /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		01E408502C61AB3B0006B86F /* ShoppingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				01E4082B2C5BCB200006B86F /* ShoppingViewController.swift */,
+				01E408502C61AB3B0006B86F /* ShoppingViewModel.swift */,
 				01E4082E2C5D1C2A0006B86F /* ShoppingCell.swift */,
 				01E408302C5E129D0006B86F /* ShoppingEditViewController.swift */,
 			);
@@ -297,6 +300,7 @@
 				01E407CF2C592D6C0006B86F /* FromViewController.swift in Sources */,
 				01E4083D2C5F658B0006B86F /* BaseView.swift in Sources */,
 				01E407E92C5A12050006B86F /* SimpleValidationViewController.swift in Sources */,
+				01E408512C61AB3B0006B86F /* ShoppingViewModel.swift in Sources */,
 				01E408442C5F7A920006B86F /* PhoneViewModel.swift in Sources */,
 				01E407A92C59100D0006B86F /* SceneDelegate.swift in Sources */,
 				01E408402C5F6E690006B86F /* PhoneView.swift in Sources */,
