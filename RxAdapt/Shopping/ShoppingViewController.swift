@@ -26,6 +26,8 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     let disposeBag = DisposeBag()
     
+    private let viewModel = ShoppingViewModel()
+    
     var data = [
         ShoppingItem(title: "그립톡 구매하기", isChecked: false),
         ShoppingItem(title: "사이다 구매", isChecked: false),
@@ -38,16 +40,26 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "쇼핑"
-        tableViewBind()
-        addButtonBind()
+        bindViewModel()
     }
     
-    func tableViewBind() {
-        list
-            .bind(to: tableView.rx.items(cellIdentifier: ShoppingCell.identifier, cellType: ShoppingCell.self)) { [weak self] (row, element, cell) in
-                guard let self = self else { return }
-                cell.backgroundColor = .systemGray6
+    func bindViewModel() {
+        let input = ShoppingViewModel.Input(
+            addItemTrigger: addButton.rx.tap
+                .withLatestFrom(textField.rx.text.orEmpty)
+                .filter { !$0.isEmpty }
+                .asObservable(),
+            deleteItemTrigger: tableView.rx.itemDeleted.asObservable(),
+            selectItemTrigger: tableView.rx.modelSelected(ShoppingItem.self).asObservable(),
+            toggleCheckmarkTrigger: tableView.rx.itemAccessoryButtonTapped.map { $0.row }.asObservable()
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.items
+            .drive(tableView.rx.items(cellIdentifier: ShoppingCell.identifier, cellType: ShoppingCell.self)) { (row, element, cell) in
                 cell.configure(with: element)
+                cell.backgroundColor = .systemGray6
                 cell.checkmarkButton.rx.tap
                     .bind { [weak self] in
                         self?.toggleCheckmark(at: row)
@@ -56,32 +68,10 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
             }
             .disposed(by: disposeBag)
         
-        tableView.rx.itemDeleted
-            .bind(with: self) { owner, indexPath in
-                var data = try! owner.list.value()
-                data.remove(at: indexPath.row)
-                owner.list.onNext(data)
-            }
-            .disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected(ShoppingItem.self)
-            .bind(with: self) { owner, item in
-                guard let index = try? owner.list.value().firstIndex(where: { $0.title == item.title }) else { return }
-                owner.presentEditVC(for: index, item: item)
-            }
-            .disposed(by: disposeBag)
-    }
-    
-    func addButtonBind() {
-        addButton.rx.tap
-            .withLatestFrom(textField.rx.text.orEmpty)
-            .filter { !$0.isEmpty }
-            .map { ShoppingItem(title: $0, isChecked: false) }
-            .bind(with: self, onNext: { owner, item in
-                var data = try! owner.list.value()
-                data.append(item)
-                owner.list.onNext(data)
-                owner.textField.text = ""
+        output.showEditItem
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (index, item) in
+                self?.presentEditVC(for: index, item: item)
             })
             .disposed(by: disposeBag)
     }
