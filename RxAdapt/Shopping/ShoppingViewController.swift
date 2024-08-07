@@ -24,6 +24,7 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
     let textField = UITextField()
     let addButton = UIButton()
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     let disposeBag = DisposeBag()
     
     private let viewModel = ShoppingViewModel()
@@ -33,6 +34,13 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
         ShoppingItem(title: "사이다 구매", isChecked: false),
         ShoppingItem(title: "아이패드 최저가 알아보기", isChecked: false),
         ShoppingItem(title: "양말 구매하기", isChecked: false)
+    ]
+    
+    var collectionData = [
+        "키보드 사기",
+        "마우스 사기",
+        "배추 사기",
+        "피자 먹기"
     ]
     
     lazy var list = BehaviorSubject(value: data)
@@ -51,7 +59,8 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
                 .asObservable(),
             deleteItemTrigger: tableView.rx.itemDeleted.asObservable(),
             selectItemTrigger: tableView.rx.modelSelected(ShoppingItem.self).asObservable(),
-            toggleCheckmarkTrigger: tableView.rx.itemAccessoryButtonTapped.map { $0.row }.asObservable()
+            toggleCheckmarkTrigger: tableView.rx.itemAccessoryButtonTapped.map { $0.row }.asObservable(),
+            collectionItemSelected: collectionView.rx.modelSelected(String.self).asObservable()
         )
         
         let output = viewModel.transform(input: input)
@@ -74,13 +83,26 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
                 self?.presentEditVC(for: index, item: item)
             })
             .disposed(by: disposeBag)
+        
+        Observable.just(collectionData)
+            .bind(to: collectionView.rx.items(cellIdentifier: ShoppingCollectionViewCell.identifier, cellType: ShoppingCollectionViewCell.self)) { (row, element, cell) in
+                cell.label.text = element
+            }
+            .disposed(by: disposeBag)
+        
+        output.collectionItemAdded
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] item in
+                self?.addItemToTableView(item)
+            })
+            .disposed(by: disposeBag)
     }
     
     func presentEditVC(for index: Int, item: ShoppingItem) {
         let editViewController = ShoppingEditViewController()
         editViewController.shoppingItem = item
         editViewController.index = index
-        editViewController.list = list
+        editViewController.list = viewModel.itemsRelay
         present(editViewController, animated: true, completion: nil)
     }
     
@@ -90,11 +112,18 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
         list.onNext(currentData)
     }
     
+    func addItemToTableView(_ item: String) {
+        var currentData = try! list.value()
+        currentData.append(ShoppingItem(title: item, isChecked: false))
+        list.onNext(currentData)
+    }
+    
     override func configureHierarchy() {
         view.addSubview(searchView)
         searchView.addSubview(textField)
         searchView.addSubview(addButton)
         view.addSubview(tableView)
+        view.addSubview(collectionView)
     }
     
     override func configureUI() {
@@ -110,6 +139,9 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
         addButton.layer.cornerRadius = 5
         addButton.setTitle("추가", for: .normal)
         addButton.setTitleColor(.black, for: .normal)
+        
+        collectionView.register(ShoppingCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingCollectionViewCell.identifier)
+        collectionView.backgroundColor = .lightGray
     }
     
     override func configureConstraints() {
@@ -127,10 +159,22 @@ final class ShoppingViewController: BaseViewController, UITableViewDelegate {
             make.trailing.equalTo(searchView).inset(10)
             make.width.equalTo(50)
         }
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(searchView.snp.bottom)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(50)
+        }
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchView.snp.bottom).offset(20)
+            make.top.equalTo(collectionView.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    static func layout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 120, height: 40)
+        layout.scrollDirection = .horizontal
+        return layout
     }
 }
