@@ -16,16 +16,18 @@ class ShoppingViewModel {
         let deleteItemTrigger: Observable<IndexPath>
         let selectItemTrigger: Observable<ShoppingItem>
         let toggleCheckmarkTrigger: Observable<Int>
+        let collectionItemSelected: Observable<String>
     }
     
     struct Output {
         let items: Driver<[ShoppingItem]>
         let showEditItem: Observable<(Int, ShoppingItem)>
+        let collectionItemAdded: Observable<String>
     }
     
     private let disposeBag = DisposeBag()
     
-    private let itemsRelay = BehaviorRelay<[ShoppingItem]>(value: [
+    let itemsRelay = BehaviorRelay<[ShoppingItem]>(value: [
         ShoppingItem(title: "그립톡 구매하기", isChecked: false),
         ShoppingItem(title: "사이다 구매", isChecked: false),
         ShoppingItem(title: "아이패드 최저가 알아보기", isChecked: false),
@@ -67,9 +69,12 @@ class ShoppingViewModel {
             }
             .compactMap { $0 }
         
+        let collectionItemAdded = input.collectionItemSelected
+        
         return Output(
             items: itemsRelay.asDriver(),
-            showEditItem: showEditItem
+            showEditItem: showEditItem,
+            collectionItemAdded: collectionItemAdded
         )
     }
 }
